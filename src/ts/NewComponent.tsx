@@ -1,6 +1,8 @@
+/* eslint-disable */
 import React from 'react';
-import { Person, NumberArray, SearchFunc, Animal, Cat, Fish } from './interfaces';
-import { eventNames } from 'cluster';
+import { Person, NumberArray, SearchFunc, Animal, Cat, Fish } from './接口';
+import './类';
+import './泛型';
 
 function NewComponent () {
   let isDone: boolean = false; // boolean类型
@@ -23,6 +25,7 @@ function NewComponent () {
     }
   };
   person.sayName(person.name);
+  console.log('\n');
 
 
   // 数组类型定义
@@ -104,6 +107,7 @@ function NewComponent () {
   push(arr3, ['4', '5', '6']);
   const numReverse: number = reverse(123456789);
   const strReverse: string = reverse('Hello World, Welcome');
+  console.log('\n');
 
 
   // 类型断言，并不会改变数据类型
@@ -146,6 +150,7 @@ function NewComponent () {
   console.log(tomCat);
   console.log(testAnimal(tomCat));
   console.log(testCat(tomCat));
+  console.log('\n');
 
 
   // 内置对象
@@ -162,6 +167,7 @@ function NewComponent () {
   });
   console.log(body);
   console.log(allDiv);
+  console.log('\n');
 
 
   // 类型别名，类型别名用来给一个类型起个新名字。
@@ -176,6 +182,7 @@ function NewComponent () {
     }
   }
   console.log(getName('类型别名'));
+  console.log('\n');
 
 
   // 字符串字面量类型，字符串字面量类型用来约束取值只能是某几个字符串中的一个。
@@ -184,13 +191,26 @@ function NewComponent () {
 
   // 元祖，数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象。
   let dic: [string, number] = ['Tom', 25];
+  // 当添加越界的元素时，它的类型会被限制为元祖中每个类型的联合类型。
   dic.push(123123);
   console.log(dic);
+  console.log('\n');
+
+
+  // 枚举，用于取值被限定在一定范围内的场景，比如一周只能有七天，颜色限定为红绿蓝等。
+  enum Days { Sun, Mon = 100, Tue, Wed, Thu, Fri, Sat };
+  console.log(Days['Sun'] === 0);
+  console.log(Days['Mon']);
+  // 常数项和计算所得项，计算所得项必须必须位于最后一项
+  enum Color { Red, Green, Blue = "blue".length };
+  console.log('\n');
+
 
   return < div >
     {num} < br /> {isDone} < br /> {myName} < br /> {unusable} {u}{n}<br />{newNum} <br />{length} <br />{handleArgs()} <br />;
   {person.name} ：{person.age} <br />{fibonacci} <br />{arr} <br />{arr1} <br />{arr2} <br />{numSum} <br />{numSum1} <br />;
   {searchResult} <br />{nameResult1} <br /> {nameResult2} <br />{nameResult3} <br />{arr3} <br />{numReverse} <br /> {strReverse}
+    <br />
   </div >;
 }
 

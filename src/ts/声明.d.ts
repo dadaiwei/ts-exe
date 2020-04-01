@@ -35,4 +35,12 @@ declare global {
   }
 }
 
+// 外部枚举
+declare enum Directions {
+  Up,
+  Down,
+  Left,
+  Right
+}
+
 export default function foo (): string;
